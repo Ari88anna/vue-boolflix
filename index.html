@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <title>Prove</title>
+    <title>BoolFix</title>
 </head>
 <body>
     
@@ -22,26 +22,28 @@
 
         <header>
            <label for="">Search movie</label>
-           <input type="text" v-model="userInput">
-           {{userInput}}
+           <input type="text" @keyup.enter="searchMovie" v-model="userInput">
+           
            <button id="movie-search-btn" @click="searchMovie">Search</button>
         </header>
 
         <main>
 
             <div class="movie-container">
-               <ul class="movie-list">
+                <ul class="movie-list">
 
-                   <li v-for="movie in movieCollection">
-                       <div>Titolo: {{movie.title}}</div>
-                       <div>Titolo originale: {{movie.original_title}}</div>
-                       <div>Lingua: {{movie.original_language}}</div>
-                       <div>Voto: {{movie.vote_average}}</div>
-                   </li>
+                    <li v-for="movie in movieCollection">
+                        
+                        <div>Titolo: {{movie.title}}</div>
+                        <div>Titolo originale: {{movie.original_title}}</div>
+                        <div>Lingua: {{movie.original_language}}</div>
+                        <div>Voto: {{movie.vote_average}}</div>
 
-               </ul>
+                    </li>
+
+                </ul>
            </div>
-           
+
         </main>
     </div>
 
