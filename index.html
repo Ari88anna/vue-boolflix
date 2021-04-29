@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Prove</title>
+</head>
+<body>
+    
+    <div id="root">
+
+        <header>
+           <label for="">Search movie</label>
+           <input type="text" v-model="userInput">
+           {{userInput}}
+           <button id="movie-search-btn" @click="searchMovie">Search</button>
+        </header>
+
+        <main>
+
+            <div class="movie-container">
+               <ul class="movie-list">
+
+                   <li v-for="movie in movieCollection">
+                       <div>Titolo: {{movie.title}}</div>
+                       <div>Titolo originale: {{movie.original_title}}</div>
+                       <div>Lingua: {{movie.original_language}}</div>
+                       <div>Voto: {{movie.vote_average}}</div>
+                   </li>
+
+               </ul>
+           </div>
+           
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
