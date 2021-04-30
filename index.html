@@ -33,12 +33,14 @@
                 <ul class="movie-list">
 
                     <li v-for="movie in movieCollection">
+
+                        <div class="movie-poster"><img :src="'https://image.tmdb.org/t/p/w342' + movie.backdrop_path" alt=""></div>
                         
                         <div>Titolo: {{movie.title}} {{movie.name}}</div>
 
                         <div>Titolo originale: {{movie.original_title}} {{movie.original_name}}</div>
 
-                        <div>Lingua: <span class="language-img"><img src="img/it.svg" alt=""></span></div>
+                        <div class="language-flag">Lingua: <span><img src="img/it.svg" alt=""></span></div>
                         <div>Voto: {{movie.vote_average}}</div>
 
                     </li>
