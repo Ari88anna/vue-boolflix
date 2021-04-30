@@ -32,7 +32,7 @@
             <div class="movie-container">
                 <ul class="movie-list">
 
-                    <li v-for="movie in movieCollection">
+                    <li id="movie" v-for="movie in movieCollection">
 
                         <div v-if="movie.backdrop_path != null" class="movie-poster"><img :src="'https://image.tmdb.org/t/p/w342' + movie.backdrop_path" alt=""></div>
                         <div v-else>Image not found</div>
@@ -42,7 +42,7 @@
                         <div>Titolo originale: {{movie.original_title}}</div>
 
                         <div class="language-flag">Lingua: 
-                            <!-- <span><img :src="'img/' + movie.original_language + '.svg'" alt=""></span> -->
+                            <span><img :src="'img/' + movie.original_language + '.svg'" alt=""></span>
                             <span>{{movie.original_language}}</span>
                         </div>
                         
@@ -52,7 +52,7 @@
                         </div>
                     </li>
 
-                    <li v-for="show in tvCollection">
+                    <li id="tv" v-for="show in tvCollection">
 
                         <div v-if="show.backdrop_path != null" class="movie-poster"><img :src="'https://image.tmdb.org/t/p/w342' + show.backdrop_path" alt=""></div>
                         <div v-else>Image not found</div>
@@ -62,7 +62,7 @@
                         <div>Titolo originale: {{show.original_name}}</div>
 
                         <div class="language-flag">Lingua: 
-                            <!-- <span><img :src="'img/' + movie.original_language + '.svg'" alt=""></span> -->
+                            <!-- <span><img :src="'img/' + show.original_language + '.svg'" alt=""></span> -->
                             <span>{{show.original_language}}</span>
                         </div>
                         

@@ -25,3 +25,11 @@ ul {
 .language-flag img {
     width: 20px;
 }
+
+#movie {
+    background-color: aqua;
+}
+
+#tv {
+    background-color: grey;
+}
