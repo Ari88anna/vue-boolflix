@@ -43,7 +43,7 @@
                         <div class="language-flag">Lingua: <span><img src="img/it.svg" alt=""></span></div>
                         
                         <div>Voto: {{numberAsInteger(movie.vote_average)}}</div>
-                         
+                        <i v-for="number in numberAsInteger(movie.vote_average)" class="fas fa-star"></i>
 
 
                     </li>
