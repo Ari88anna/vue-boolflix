@@ -41,7 +41,10 @@
                         <div>Titolo originale: {{movie.original_title}} {{movie.original_name}}</div>
 
                         <div class="language-flag">Lingua: <span><img src="img/it.svg" alt=""></span></div>
-                        <div>Voto: {{movie.vote_average}}</div>
+                        
+                        <div>Voto: {{numberAsInteger(movie.vote_average)}}</div>
+                        <div>Voto: {{Math.ceil(movie.vote_average / 2 )}}</div>
+
 
                     </li>
 

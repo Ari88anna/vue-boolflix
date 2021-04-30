@@ -24,6 +24,10 @@ var app = new Vue({
                     console.log(this.movieCollection)
                 });
         },
+
+        numberAsInteger(number){
+            Math.ceil(number / 2);
+        }
         
     },
     
