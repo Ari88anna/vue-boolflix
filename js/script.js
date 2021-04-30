@@ -26,7 +26,7 @@ var app = new Vue({
         },
 
         numberAsInteger(number){
-            Math.ceil(number / 2);
+            return Math.ceil(number / 2);
         }
         
     },
