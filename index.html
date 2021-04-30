@@ -34,15 +34,19 @@
 
                     <li v-for="movie in movieCollection">
                         
-                        <div>Titolo: {{movie.title}}</div>
-                        <div>Titolo originale: {{movie.original_title}}</div>
-                        <div>Lingua: {{movie.original_language}}</div>
+                        <div>Titolo: {{movie.title}} {{movie.name}}</div>
+
+                        <div>Titolo originale: {{movie.original_title}} {{movie.original_name}}</div>
+
+                        <div>Lingua: <span class="language-img"><img src="img/it.svg" alt=""></span></div>
                         <div>Voto: {{movie.vote_average}}</div>
 
                     </li>
 
-                </ul>
-           </div>
+                </ul>              
+                
+
+            </div>
 
         </main>
     </div>

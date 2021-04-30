@@ -4,6 +4,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+img {
+    width: 20px;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -20,3 +23,4 @@ ul {
 .movie-list li {
     padding: 15px 0;
 }
+
