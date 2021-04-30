@@ -22,9 +22,9 @@
 
         <header>
            <label for="">Search movie</label>
-           <input type="text" @keyup.enter="searchMovie" v-model="userInput">
+           <input type="text" @keyup.enter="searchMovie"  v-model="userInput">
            
-           <button id="movie-search-btn" @click="searchMovie">Search</button>
+           <button id="movie-search-btn" >Search</button>
         </header>
 
         <main>
@@ -35,22 +35,44 @@
                     <li v-for="movie in movieCollection">
 
                         <div v-if="movie.backdrop_path != null" class="movie-poster"><img :src="'https://image.tmdb.org/t/p/w342' + movie.backdrop_path" alt=""></div>
-                        <div v-else>image not found</div>
+                        <div v-else>Image not found</div>
                         
-                        <div>Titolo: {{movie.title}} {{movie.name}}</div>
+                        <div>Titolo: {{movie.title}} </div>
 
-                        <div>Titolo originale: {{movie.original_title}} {{movie.original_name}}</div>
+                        <div>Titolo originale: {{movie.original_title}}</div>
 
                         <div class="language-flag">Lingua: 
-                            <span><img :src="'img/' + movie.original_language + '.svg'" alt=""></span>
+                            <!-- <span><img :src="'img/' + movie.original_language + '.svg'" alt=""></span> -->
                             <span>{{movie.original_language}}</span>
                         </div>
                         
-                        <div>Voto: {{numberAsInteger(movie.vote_average)}}</div>
-                        <i v-for="number in numberAsInteger(movie.vote_average)" class="fas fa-star"></i>
-                        <i v-for="n in 5 - numberAsInteger(movie.vote_average)" class="far fa-star"></i>
-
+                        <div>Voto:
+                            <i v-for="number in numberAsInteger(movie.vote_average)" class="fas fa-star"></i>
+                            <i v-for="n in 5 - numberAsInteger(movie.vote_average)" class="far fa-star"></i>
+                        </div>
                     </li>
+
+                    <li v-for="show in tvCollection">
+
+                        <div v-if="show.backdrop_path != null" class="movie-poster"><img :src="'https://image.tmdb.org/t/p/w342' + show.backdrop_path" alt=""></div>
+                        <div v-else>Image not found</div>
+                        
+                        <div>Titolo: {{show.name}}</div>
+
+                        <div>Titolo originale: {{show.original_name}}</div>
+
+                        <div class="language-flag">Lingua: 
+                            <!-- <span><img :src="'img/' + movie.original_language + '.svg'" alt=""></span> -->
+                            <span>{{show.original_language}}</span>
+                        </div>
+                        
+                        <div>Voto:
+                            <i v-for="number in numberAsInteger(show.vote_average)" class="fas fa-star"></i>
+                            <i v-for="n in 5 - numberAsInteger(show.vote_average)" class="far fa-star"></i>
+                        </div>
+                    </li>
+
+                   
 
                 </ul>              
                 

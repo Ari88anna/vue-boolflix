@@ -18,28 +18,28 @@ var app = new Vue({
                     params: {
                         'api_key': '5081a73eac2719896b2d02d515f944ac',
                         'query': this.userInput,
-                        'page': 1
+                        
                     }
                 })
                 .then((response) => {                
                     this.movieCollection = response.data.results
                     console.log(this.movieCollection)
                 });
-        },
-        searchTv() {
+
             axios
                 .get('https://api.themoviedb.org/3/search/tv?', {
                     params: {
                         'api_key': '5081a73eac2719896b2d02d515f944ac',
                         'query': this.userInput,
-                        'page': 1
+                        
                     }
                 })
                 .then((response) => {                
                     this.tvCollection = response.data.results
-                    console.log(this.movieCollection)
+                    console.log(this.tvCollection)
                 });
         },
+        
         // Funzione che torna un numero intero
         numberAsInteger(number){
             return Math.ceil(number / 2);
