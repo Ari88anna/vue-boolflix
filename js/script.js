@@ -6,8 +6,12 @@ var app = new Vue({
         //array vuoto. Sarà popolato da una lista di serie tv e show dalla chiamata API in base alla ricerca dell'utente
         tvCollection: [],
         // variabile (corrispondente al v-model dell'input da passare al parametro 'query' della API)
-        userInput: '',   
-            
+        userInput: '', 
+        // array di bandierine
+        flagsArray: [
+            'en',
+            'it' 
+        ]           
     },
     methods: {
 
@@ -38,6 +42,15 @@ var app = new Vue({
                     this.tvCollection = response.data.results
                     console.log(this.tvCollection)
                 });
+        },
+
+        posterImg(poster) {
+            return `https://image.tmdb.org/t/p/w342/${poster}`
+        },
+        
+        flagLanguage(language) {
+
+            return `img/${language}.svg`
         },
         
         // Funzione che torna un numero intero

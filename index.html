@@ -34,7 +34,7 @@
 
                     <li id="movie" v-for="movie in movieCollection">
 
-                        <div v-if="movie.backdrop_path != null" class="movie-poster"><img :src="'https://image.tmdb.org/t/p/w342' + movie.backdrop_path" alt=""></div>
+                        <div v-if="movie.backdrop_path != null" class="movie-poster"><img :src="posterImg(movie.backdrop_path)" alt=""></div>
                         <div v-else>Image not found</div>
                         
                         <div>Titolo: {{movie.title}} </div>
@@ -42,7 +42,7 @@
                         <div>Titolo originale: {{movie.original_title}}</div>
 
                         <div class="language-flag">Lingua: 
-                            <span><img :src="'img/' + movie.original_language + '.svg'" alt=""></span>
+                            <span v-if="flagsArray.includes(movie.original_language)"><img :src="flagLanguage(movie.original_language)" alt=""></span>
                             <span>{{movie.original_language}}</span>
                         </div>
                         
