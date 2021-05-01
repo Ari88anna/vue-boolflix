@@ -14,22 +14,111 @@ ul {
     list-style-type: none;
 }
 
-.movie-container {
+/* HEADER */
+
+#header-top {
+    background-color: black;
     padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    
 }
 
-.movie-list li {
-    padding: 15px 0;
+.boolfix-logo h1 {
+    color: red;
+    font-weight: 100;
+    text-transform: uppercase;
 }
+
+.search-bar {
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.search-bar i {
+    color: grey;
+}
+
+#search-movie {
+    height: 30px;
+    width: 300px;
+    border: 0;
+}
+
+/* MAIN */
+main {
+    background-color: grey;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;    
+}
+
+.card-container li.movie,
+.card-container li.tv {
+    width: calc(100% / 3 - 90px);    
+    margin: 8px 5px;
+    padding: 5px;
+    background-color: white;     
+}
+
+.card-container .inner-card {      
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-container .inner-card .no-poster {
+    height: 192px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.card-container .inner-card .no-poster h2 {
+    text-align: center;
+    position: relative;
+    top: 25%;
+}
+
+.card-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: none
+}
+
+ .overlay .overlay-content {
+    padding: 0 15px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.overlay .overlay-content span {
+    font-weight: 100;
+}
+
+.overlay .overlay-content li {
+    padding: 5px 0;
+}
+
+.card-container li:hover .overlay {
+    display: block;
+}
+
+.overlay .overlay-content li:last-child i {
+    color: yellow;
+}
+
+/* test */
 
 .language-flag img {
     width: 20px;
 }
 
-#movie {
-    background-color: aqua;
-}
-
-#tv {
-    background-color: grey;
-}

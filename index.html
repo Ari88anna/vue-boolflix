@@ -10,76 +10,158 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <title>BoolFix</title>
 </head>
 <body>
-    
+
     <div id="root">
-
+        <!-- HEADER -->
         <header>
-           <label for="">Search movie</label>
-           <input type="text" @keyup.enter="searchMovie"  v-model="userInput">
-           
-           <button id="movie-search-btn" >Search</button>
-        </header>
+            <div id="header-top">
+                <!-- logo -->
+                <div class="boolfix-logo">
+                    <h1>Boolflix</h1>
+                </div>
+                <!-- end logo -->
 
+                <div id="search-bar">
+                    <label for="search-movie"><i class="fas fa-search"></i></label>
+                    <input id="search-movie"
+                        type="text"
+                        @keyup.enter="searchMovie"
+                        v-model="userInput"
+                        placeholder="Search Movie">
+
+                    <button id="movie-search-btn" @click="searchMovie" >Search</button>
+                </div>
+            </div>
+        </header>
+        <!-- end HEADER -->
+
+        <!-- MAIN -->
         <main>
 
-            <div class="movie-container">
-                <ul class="movie-list">
+            <!-- Movie container -->
+            <div class="main-content">
 
-                    <li id="movie" v-for="movie in movieCollection">
+                <!-- Movie and show-tv card container -->
+                <ul class="card-container">
 
-                        <div v-if="movie.backdrop_path != null" class="movie-poster"><img :src="posterImg(movie.backdrop_path)" alt=""></div>
-                        <div v-else>Image not found</div>
-                        
-                        <div>Titolo: {{movie.title}} </div>
+                    <!-- SINGLE MOVIE CARD -->
+                    <li class="movie" v-for="movie in movieCollection">
 
-                        <div>Titolo originale: {{movie.original_title}}</div>
+                        <div class="inner-card">
 
-                        <div class="language-flag">Lingua: 
-                            <span v-if="flagsArray.includes(movie.original_language)"><img :src="flagLanguage(movie.original_language)" alt=""></span>
-                            <span>{{movie.original_language}}</span>
-                        </div>
-                        
-                        <div>Voto:
-                            <i v-for="number in numberAsInteger(movie.vote_average)" class="fas fa-star"></i>
-                            <i v-for="n in 5 - numberAsInteger(movie.vote_average)" class="far fa-star"></i>
+                            <!-- movie poster -->
+                            <div class="bg-poster" v-if="movie.backdrop_path != null" >
+                                <img :src="posterImg(movie.backdrop_path)" alt="">
+                            </div>
+
+                            <div class="no-poster" v-else>
+                                <h2>{{movie.title}}</h2>
+                            </div>
+                            <!-- end movie poster -->
+
+                            <!-- overlay with movie info -->
+                            <div class="overlay">
+
+                                <ul class="overlay-content">
+
+                                    <li>Titolo: <span>{{movie.title}}</span></li>
+    
+                                    <li>Titolo originale: <span>{{movie.original_title}}</span></li>
+            
+                                    <li class="language-flag">Lingua:
+                                        
+                                        <span v-if="flagsArray.includes(movie.original_language)">
+                                            <img :src="flagLanguage(movie.original_language)" alt="">
+                                        </span>
+
+                                        <span v-else>{{movie.original_language}}</span>
+
+                                    </li>
+            
+                                    <li>Voto:
+                                        <i v-for="number in numberAsInteger(movie.vote_average)" class="fas fa-star"></i>
+                                        <i v-for="n in 5 - numberAsInteger(movie.vote_average)" class="far fa-star"></i>
+                                    </li>
+
+                                    <li>
+                                        {{movie.overview}}
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                            <!-- end overlay with movie info -->
+
                         </div>
                     </li>
+                    <!-- end SINGLE MOVIE CARD -->
 
-                    <li id="tv" v-for="show in tvCollection">
 
-                        <div v-if="show.backdrop_path != null" class="movie-poster"><img :src="'https://image.tmdb.org/t/p/w342' + show.backdrop_path" alt=""></div>
-                        <div v-else>Image not found</div>
-                        
-                        <div>Titolo: {{show.name}}</div>
+                    <!-- SINGLE SHOW CARD -->
+                    <li class="tv" v-for="show in tvCollection">
 
-                        <div>Titolo originale: {{show.original_name}}</div>
+                        <div class="inner-card">
 
-                        <div class="language-flag">Lingua: 
-                            <!-- <span><img :src="'img/' + show.original_language + '.svg'" alt=""></span> -->
-                            <span>{{show.original_language}}</span>
+                            <!-- Show poster -->
+                            <div class="bg-poster" v-if="show.backdrop_path != null" >
+                                <img :src="'https://image.tmdb.org/t/p/w342' + show.backdrop_path" alt="">
+                            </div>
+
+                            <div class="no-poster" v-else>
+                                <h2>{{show.name}}</h2>
+                            </div>
+                            <!-- end Show poster -->
+
+                            <!-- overlay with show info -->
+                            <div class="overlay">
+
+                                <ul class="overlay-content">
+
+                                    <li>Titolo: <span>{{show.name}}</span></li>
+                                    
+                                    <li>Titolo originale: <span>{{show.original_name}}</span></li>
+
+                                    <li class="language-flag">Lingua:
+                                        
+                                        <span v-if="flagsArray.includes(show.original_language)">
+                                            <img :src="flagLanguage(show.original_language)" alt="">
+                                        </span>
+
+                                        <span v-else>{{show.original_language}}</span>
+
+                                    </li>
+
+                                    <li>
+                                        Voto:
+                                        <i v-for="number in numberAsInteger(show.vote_average)" class="fas fa-star"></i>
+                                        <i v-for="n in 5 - numberAsInteger(show.vote_average)" class="far fa-star"></i>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                            <!-- end overlay with show info -->                             
+
                         </div>
                         
-                        <div>Voto:
-                            <i v-for="number in numberAsInteger(show.vote_average)" class="fas fa-star"></i>
-                            <i v-for="n in 5 - numberAsInteger(show.vote_average)" class="far fa-star"></i>
-                        </div>
                     </li>
+                    <!-- end SINGLE SHOW CARD -->
 
-                   
+                </ul>
+                <!-- end Movie and show-tv card container -->
 
-                </ul>              
-                
 
             </div>
-
+            <!-- end Movie container -->
         </main>
+        <!-- end MAIN -->
     </div>
 
     <script src="js/script.js"></script>
