@@ -57,12 +57,12 @@
                         <div class="inner-card">
 
                             <!-- movie poster -->
-                            <div class="bg-poster" v-if="movie.backdrop_path != null" >
-                                <img :src="posterImg(movie.backdrop_path)" alt="">
+                            <div class="bg-poster" v-if="movie.poster_path != null" >
+                                <img :src="posterImg(movie.poster_path)" alt="">
                             </div>
 
                             <div class="no-poster" v-else>
-                                <h2>{{movie.title}}</h2>
+                                <img src="img/no-image.png" alt="">
                             </div>
                             <!-- end movie poster -->
 
@@ -110,12 +110,12 @@
                         <div class="inner-card">
 
                             <!-- Show poster -->
-                            <div class="bg-poster" v-if="show.backdrop_path != null" >
-                                <img :src="'https://image.tmdb.org/t/p/w342' + show.backdrop_path" alt="">
+                            <div class="bg-poster" v-if="show.poster_path != null" >
+                                <img :src="posterImg(show.poster_path)" alt="">
                             </div>
 
                             <div class="no-poster" v-else>
-                                <h2>{{show.name}}</h2>
+                                <img src="img/no-image.png" alt="">
                             </div>
                             <!-- end Show poster -->
 
