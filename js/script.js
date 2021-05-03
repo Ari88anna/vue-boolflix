@@ -10,7 +10,12 @@ var app = new Vue({
         // array di bandierine
         flagsArray: [
             'en',
-            'it' 
+            'it',
+            'fr',
+            'de',
+            'es',
+            'ja',
+            'no',
         ]           
     },
     methods: {

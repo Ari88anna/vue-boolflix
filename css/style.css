@@ -69,10 +69,25 @@ main {
 
 .card-container li.movie,
 .card-container li.tv {
-    width: calc(100% / 3 - 90px);    
-    margin: 8px 5px;
+    width: calc(100% / 3 - 110px);    
+    margin: 8px 20px;
     padding: 5px;   
 }
+
+@media all and (max-width: 768px) {
+    .card-container li.movie,
+    .card-container li.tv {
+        width: calc(100% / 1 - 110px);
+    }
+}
+
+@media all and (min-width: 769px) and (max-width: 1199px) {
+    .card-container li.movie,
+    .card-container li.tv {
+        width: calc(100% / 2 - 110px);
+    }
+}
+
 
 .card-container .inner-card {      
     position: relative;
@@ -100,7 +115,7 @@ main {
     width: 100%;
     height: 100%;
     color: white;
-    display: none
+    display: none;
 }
 
  .overlay .overlay-content {
