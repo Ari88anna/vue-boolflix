@@ -7,6 +7,9 @@ var app = new Vue({
         tvCollection: [],
         // variabile (corrispondente al v-model dell'input da passare al parametro 'query' della API)
         userInput: '', 
+        // array vuoto. Sarà popolato dai generi dei film
+        movieGenres: [],
+        activeGenre: '',
         // array di bandierine
         flagsArray: [
             'en',
@@ -32,7 +35,7 @@ var app = new Vue({
                 })
                 .then((response) => {                
                     this.movieCollection = response.data.results
-                    console.log(this.movieCollection)
+                    
                 });
 
             axios
@@ -45,14 +48,17 @@ var app = new Vue({
                 })
                 .then((response) => {                
                     this.tvCollection = response.data.results
-                    console.log(this.tvCollection)
+                    
                 });
         },
-
+        // funzione che ritorna il percorso dell'immagine
+        // poster-->variabile che contiene l'immagine
         posterImg(poster) {
             return `https://image.tmdb.org/t/p/w342/${poster}`
         },
-        
+
+        // funzione che ritorna il percorso dell'immagine
+        // language-->variabile che contiene la sigla della lingua originale e che corrisponde all'immagine della bandiera
         flagLanguage(language) {
 
             return `img/${language}.svg`
@@ -61,9 +67,28 @@ var app = new Vue({
         // Funzione che torna un numero intero
         numberAsInteger(number){
             return Math.ceil(number / 2);
-        }
+        },        
         
     },
+    mounted () {
+        axios
+            .get('https://api.themoviedb.org/3/genre/movie/list?',{
+                params: {
+                    'api_key': '5081a73eac2719896b2d02d515f944ac',
+                }
+            })
+            .then((response) => {
+                this.movieGenres = response.data.genres
+                
+
+                // genres.forEach(element => {
+                //     this.movieGenres.push(element.name)
+                    
+                // });
+                
+            })
+    }
+
     
   })
 

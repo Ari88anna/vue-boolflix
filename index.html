@@ -41,12 +41,25 @@
                             placeholder="Search Movie">                    
                     </div>                
                 </div>
+
+                <div id="header-bottom">
+                    <label for="genre">search by genres</label>
+
+                
+                    <select id="genre" v-model="activeGenre">
+
+                        <option value="">All</option>
+                        <option v-for="(genre) in movieGenres" :value="genre">{{genre.name}}</option>                   
+
+
+                    </select>
+                    {{activeGenre}}
+                </div>
             </header>
             <!-- end HEADER -->
 
             <!-- MAIN -->
-            <main>
-
+            <main>                
                 <!-- Movie container -->
                 <div class="main-content">
 
@@ -54,7 +67,9 @@
                     <ul class="card-container">
 
                         <!-- SINGLE MOVIE CARD -->
-                        <li class="movie" v-for="movie in movieCollection">
+                        <li class="movie" 
+                        v-for="movie in movieCollection"
+                        v-if="activeGenre == '' || activeGenre.id == movie.genre_ids[]">
 
                             <div class="inner-card">
 
@@ -148,7 +163,7 @@
 
                                         <li>
                                             {{show.overview}}
-                                        </li>
+                                        </li>                                       
 
                                     </ul>
 
@@ -158,7 +173,9 @@
                             </div>
                             
                         </li>
-                        <!-- end SINGLE SHOW CARD -->
+                        <!-- end SINGLE SHOW CARD -->          
+
+                        
 
                     </ul>
                     <!-- end Movie and show-tv card container -->
