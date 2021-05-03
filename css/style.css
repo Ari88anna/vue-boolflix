@@ -54,7 +54,26 @@ ul {
     border: 0;
 }
 
+
+
+#header-bottom {
+    background-color: black;
+}
+
 /* MAIN */
+
+/* genre select */
+.genre-select{
+    background-color: dimgrey;
+    padding: 10px;
+    text-align: center;
+}
+
+select#genre {
+    height: 30px;
+    border-radius: 10px;
+}
+/* main content */
 main {
     background-color: grey;
     height: calc(100% - 80px);

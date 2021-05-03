@@ -22,13 +22,17 @@
         <div id="app-wrapper">
             <!-- HEADER -->
             <header>
+
+                <!-- Headertop -->
                 <div id="header-top">
+
                     <!-- logo -->
                     <div class="boolfix-logo">
                         <h1>Boolflix</h1>
                     </div>
                     <!-- end logo -->
 
+                    <!-- Search bar -->
                     <div id="search-bar">
                         <label for="search-movie">
                             <i class="fas fa-search"></i>
@@ -39,12 +43,21 @@
                             @keyup.enter="searchMovie"
                             v-model="userInput"
                             placeholder="Search Movie">                    
-                    </div>                
+                    </div> 
+                    <!-- end search bar -->
+
                 </div>
+                <!-- end header top -->            
+                
 
-                <div id="header-bottom">
-                    <label for="genre">search by genres</label>
+            </header>
+            <!-- end HEADER -->
 
+            <!-- MAIN -->
+            <main>
+                
+                <section class="genre-select">
+                    <label for="genre">Filter by Genre</label>
                 
                     <select id="genre" v-model="activeGenre">
 
@@ -53,23 +66,19 @@
 
 
                     </select>
-                    {{activeGenre}}
-                </div>
-            </header>
-            <!-- end HEADER -->
+                </section>
 
-            <!-- MAIN -->
-            <main>                
+
                 <!-- Movie container -->
-                <div class="main-content">
+                <section class="main-content">
 
                     <!-- Movie and show-tv card container -->
                     <ul class="card-container">
 
-                        <!-- SINGLE MOVIE CARD -->
+                        <!----------------------------- SINGLE MOVIE CARD ------------------------------>
                         <li class="movie" 
                         v-for="movie in movieCollection"
-                        v-if="activeGenre == '' || activeGenre.id == movie.genre_ids[]">
+                        v-if="activeGenre == '' || movie.genre_ids.includes(activeGenre.id)">
 
                             <div class="inner-card">
 
@@ -118,11 +127,13 @@
 
                             </div>
                         </li>
-                        <!-- end SINGLE MOVIE CARD -->
+                        <!---------------------------------end SINGLE MOVIE CARD ----------------------------------->
 
 
-                        <!-- SINGLE SHOW CARD -->
-                        <li class="tv" v-for="show in tvCollection">
+                        <!--------------------------------- SINGLE SHOW CARD --------------------------------------->
+                        <li class="tv" 
+                        v-for="show in tvCollection" 
+                        v-if="activeGenre == '' || show.genre_ids.includes(activeGenre.id)">
 
                             <div class="inner-card">
 
@@ -173,7 +184,7 @@
                             </div>
                             
                         </li>
-                        <!-- end SINGLE SHOW CARD -->          
+                        <!-------------------------------------------- end SINGLE SHOW CARD ---------------------------------------------------->          
 
                         
 
@@ -181,7 +192,7 @@
                     <!-- end Movie and show-tv card container -->
 
 
-                </div>
+                </section>
                 <!-- end Movie container -->
             </main>
             <!-- end MAIN -->
