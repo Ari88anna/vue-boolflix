@@ -14,6 +14,10 @@ ul {
     list-style-type: none;
 }
 
+#app-wrapper {
+    height: 100vh;
+}
+
 /* HEADER */
 
 #header-top {
@@ -30,13 +34,17 @@ ul {
     text-transform: uppercase;
 }
 
-.search-bar {
+#search-bar {
     background-color: white;
-    padding: 10px 15px;
+    padding: 5px 10px;
     border-radius: 5px;
 }
 
-.search-bar i {
+#search-bar label {
+    margin-right: 10px;
+}
+
+#search-bar i {
     color: grey;
 }
 
@@ -49,6 +57,8 @@ ul {
 /* MAIN */
 main {
     background-color: grey;
+    height: calc(100% - 80px);
+    overflow-x: scroll;
 }
 
 .card-container {
@@ -61,23 +71,26 @@ main {
 .card-container li.tv {
     width: calc(100% / 3 - 90px);    
     margin: 8px 5px;
-    padding: 5px;
-    background-color: white;     
+    padding: 5px;   
 }
 
 .card-container .inner-card {      
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 342px;
+    height: 520px;
     overflow: hidden;
 }
 
 .card-container .inner-card .no-poster {
-    height: 192px;
-    background-color: rgba(0, 0, 0, 0.7);
+    height:100%;
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
 }
 
-
+.card-container .inner-card .no-poster img {
+   width: 100%;   
+}
 
 .card-container .overlay {
     position: absolute;
@@ -91,7 +104,7 @@ main {
 }
 
  .overlay .overlay-content {
-    padding: 0 15px;
+    padding: 20px 15px;
     font-size: 15px;
     font-weight: 500;
 }
@@ -108,11 +121,9 @@ main {
     display: block;
 }
 
-.overlay .overlay-content li:last-child i {
+.overlay .overlay-content li.stars i {
     color: yellow;
 }
-
-/* test */
 
 .language-flag img {
     width: 20px;
