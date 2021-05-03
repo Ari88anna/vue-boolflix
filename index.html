@@ -77,8 +77,8 @@
 
                         <!----------------------------- SINGLE MOVIE CARD ------------------------------>
                         <li class="movie" 
-                        v-for="movie in movieCollection"
-                        v-if="activeGenre == '' || movie.genre_ids.includes(activeGenre.id)">
+                            v-for="movie in movieCollection"
+                            v-if="activeGenre == '' || movie.genre_ids.includes(activeGenre.id)">
 
                             <div class="inner-card">
 
@@ -117,7 +117,8 @@
                                         </li>
 
                                         <li>
-                                            {{movie.overview}}
+                                            {{movie.overview}}     
+
                                         </li>
 
                                     </ul>
@@ -132,8 +133,8 @@
 
                         <!--------------------------------- SINGLE SHOW CARD --------------------------------------->
                         <li class="tv" 
-                        v-for="show in tvCollection" 
-                        v-if="activeGenre == '' || show.genre_ids.includes(activeGenre.id)">
+                            v-for="show in tvCollection" 
+                            v-if="activeGenre == '' || show.genre_ids.includes(activeGenre.id)">
 
                             <div class="inner-card">
 

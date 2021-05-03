@@ -54,8 +54,6 @@ ul {
     border: 0;
 }
 
-
-
 #header-bottom {
     background-color: black;
 }
@@ -98,6 +96,9 @@ main {
     .card-container li.tv {
         width: calc(100% / 1 - 110px);
     }
+    #search-movie {        
+        width: 100px;       
+    }
 }
 
 @media all and (min-width: 769px) and (max-width: 1199px) {
@@ -111,12 +112,12 @@ main {
 .card-container .inner-card {      
     position: relative;
     width: 342px;
-    height: 520px;
-    overflow: hidden;
+    height: 520px;   
+    cursor: pointer;
 }
 
 .card-container .inner-card .no-poster {
-    height:100%;
+    height: 100%;
     display: flex;
     align-items: center;
     background-color: #f2f2f2;
@@ -135,6 +136,7 @@ main {
     height: 100%;
     color: white;
     display: none;
+    overflow: auto;
 }
 
  .overlay .overlay-content {
@@ -151,7 +153,7 @@ main {
     padding: 5px 0;
 }
 
-.card-container li:hover .overlay {
+.card-container li .inner-card:hover .overlay {
     display: block;
 }
 
